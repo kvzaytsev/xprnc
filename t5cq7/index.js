@@ -7,7 +7,7 @@ const initState = {
     result: ''
 };
 
-export const rle = str => resultLens(str.split('').reduce(
+module.exports.rle = str => resultLens(str.split('').reduce(
     ({prev, counter, result}, letter, idx, src) => {
         if (prev === letter) {
             counter++;
@@ -20,3 +20,25 @@ export const rle = str => resultLens(str.split('').reduce(
         return {prev: letter, counter, result};
     }, initState)
 );
+
+module.exports.rle2 = str => {
+    const regexp = /([A-Z])\1*/g;
+    let match = null,
+        result = '';
+
+    while(match = regexp.exec(str)) {
+        let [sequence, letter] = match;
+        result += `${letter}${sequence.length > 1 ? sequence.length : ''}`
+    }
+
+    return result;
+}
+
+module.exports.rle3 = str => str.split('').reduce(
+    (accumulator, letter, idx, src) => 
+        (accumulator.push(!accumulator.length || letter !== src[idx-1]
+            ? letter
+            : `${accumulator.pop()}${letter}`
+        ), accumulator)
+    , []
+).map(sequence => `${sequence[0]}${sequence.length > 1 ? sequence.length : ''}`).join('');
