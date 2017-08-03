@@ -24,7 +24,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceRoot}/qv7j2/index.js"
+            "program": "${workspaceRoot}/z3vf9/index.js"
         }
     ]
 }

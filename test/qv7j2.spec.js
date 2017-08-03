@@ -30,7 +30,6 @@ describe('In array [16,17,11,3,13,10,6,7,12,9]', () => {
     expect(foundSets).to.be.an('array');
     foundSets.should.have.lengthOf(5);
     expect(foundSets).to.have.deep.members(expArrays);
-
   });
 
 });
